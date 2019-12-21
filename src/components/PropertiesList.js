@@ -30,21 +30,20 @@ export default class PropertiesList extends Component {
                         <div className="col-md-4 p-2" key={property.id}>
                             <div className="card">
                                 <div className="card-header d-flex justify-content-between">
-                                    <h5>{property.title}</h5>
-                                    <Link to={"/view/"+ property.id} className="btn btn-secondary">
-                                        <i
-                                            className="material-icons"
-                                        >
-                                            Ver detalle</i>
+                                    <h5>{property.property_type.name} - {property.transaction_type.name}</h5>
+                                    <Link to={"/view/"+ property.id} className="btn btn-primary">
+                                        <i className="material-icons">Ver Detalle</i>
                                     </Link>
                                 </div>
                                 <div className="card-body">
                                     <h4>
-                                        {property.property_type.name} - {property.transaction_type.name}
+                                        {property.title}
                                     </h4>
                                     <div className="container">
                                     </div>
                                 </div>
+                                <img src="https:\\cdn-thumbnailer-properties.inmokey.com\p\w500\9\9\p-83199-110814120842-981432.jpg?v=3" alt=""/>
+
                                 <div className="card-footer">
                                     <p>
                                         {property.country.name} - {property.state.name} - {property.city.name}
