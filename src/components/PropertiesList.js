@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+let styles = {
+    margin: 'auto',
+    width: '480px'
+};
 
 export default class PropertiesList extends Component {
 
@@ -19,19 +25,18 @@ export default class PropertiesList extends Component {
         const res = await axios.get('http://api-frontend.inmokey.com/properties', options);
         this.setState({ properties: res.data.content })
 
-        const imagMedium = this.state.properties.map(property => {
-            return property.images.map(image => { return ( <img src={image.medium} alt=""/>)  })
-        })
+
     }
 
     render() {
         return (
             <div className="row">
+
                 {
                     this.state.properties.map(property => (
                         <div className="col-md-4 p-2" key={property.id}>
                             <div className="card">
-                                <div className="card-header d-flex justify-content-between">
+                                <div className="card-header d-flex justify-content-between" >
                                     <h5>{property.property_type.name} - {property.transaction_type.name}</h5>
                                     <Link to={"/view/" + property.id} className="btn btn-primary">
                                         <i className="material-icons">Ver Detalle</i>
@@ -43,34 +48,30 @@ export default class PropertiesList extends Component {
                                     </h4>
                                     <div className="container">
                                     </div>
-                                </div>    
-                                <img src={this.state.properties.images[1]} alt=""/>
-                              {/* {property.images.map(image => { <img src={image.medium} alt=""/>  })} */}
+                                </div>
+                                {/* {this.state.properties.map(property => {
+                                     return property.images.map(image => { 
+                                         return ( {} )  }) })} */}
 
-                                    {/* <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                                        <div className="carousel-inner">
-                                            <div className="carousel-item active">
-                                                <img src="..." className="d-block w-100" alt="..." />
-                                            </div>
-                                            <div className="carousel-item">
-                                                <img src="..." className="d-block w-100" alt="..." />
-                                            </div>
-                                            <div className="carousel-item">
-                                                <img src="..." className="d-block w-100" alt="..." />
-                                            </div>
+
+                                <div style={styles}>
+                                    <Carousel>
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt=""  />
                                         </div>
-                                        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span className="sr-only">Previous</span>
-                                        </a>
-                                        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span className="sr-only">Next</span>
-                                        </a>
-                                    </div> */}
-                                   
-                                    
-                                
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt=""/>
+                                        </div>
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt=""/>
+                                        </div>
+                                    </Carousel>
+                                </div>
+
+
+
+
+
 
                                 <div className="card-footer">
                                     <p>

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+let styles = {
+    margin: 'auto',
+    width: '480px'
+};
 
 export default class PropertiesDetails extends Component {
 
@@ -17,12 +23,17 @@ export default class PropertiesDetails extends Component {
             };
             const res = await axios.get('http://api-frontend.inmokey.com/properties/' + this.props.match.params.id, options);
             this.setState({ properties: res.data })
-            console.log(this.state.properties)
+            // console.log(this.state.properties)
         }
     }
 
     render() {
         const precio = this.state.properties.price
+
+        if (this.state.properties.status === 'available'){
+            var status = 'Disponible';
+        } else{ status= 'No disponible'}
+
         return (
             <div className="row">
                 <div className="col-md-8 p-4">
@@ -30,9 +41,30 @@ export default class PropertiesDetails extends Component {
                         <h5 className="card-header">{this.state.properties.title}</h5>
                         <div className="card-body">
                             <h5 className="card-title">{this.state.properties.short_description}</h5>
-                            <img src="" alt="" />
+                            {/* {this.state.properties.map(property => {
+                                     return property.images.map(image => { 
+                                         return ( {} )  }) })} */}
+
+                            <div style={styles}>
+                                    <Carousel>
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                        </div>
+                                        <div>
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                        </div>
+                                    </Carousel>
+                                </div>
+
+
                             <p className="card-text">{this.state.properties.description}</p>
                             <p className="card-text">Precio: $ {precio}.-</p>
+                            <p className="card-text">{status}</p>
+                            
+
                         </div>
                     </div>
                 </div>
