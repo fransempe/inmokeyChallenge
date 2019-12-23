@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 let styles = {
     margin: 'auto',
-    width: '480px'
+    width: '90%'
 };
 
 export default class PropertiesDetails extends Component {
@@ -23,7 +23,7 @@ export default class PropertiesDetails extends Component {
             };
             const res = await axios.get('http://api-frontend.inmokey.com/properties/' + this.props.match.params.id, options);
             this.setState({ properties: res.data })
-            // console.log(this.state.properties)
+
         }
     }
 
@@ -41,20 +41,21 @@ export default class PropertiesDetails extends Component {
                         <h5 className="card-header">{this.state.properties.title}</h5>
                         <div className="card-body">
                             <h5 className="card-title">{this.state.properties.short_description}</h5>
-                            {/* {this.state.properties.map(property => {
+                        
+                           {/* {this.state.properties.map(property => {
                                      return property.images.map(image => { 
-                                         return ( {} )  }) })} */}
+                                         return ( console.log("asd") )  }) })}  */}
 
                             <div style={styles}>
                                     <Carousel>
                                         <div>
-                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w1000/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
                                         </div>
                                         <div>
-                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w1000/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
                                         </div>
                                         <div>
-                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w500/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
+                                            <img src="https://cdn-thumbnailer-properties.inmokey.com/p/w1000/0/1/p-83201-250614113249-111411.jpg?v=3" alt="" />
                                         </div>
                                     </Carousel>
                                 </div>
@@ -86,7 +87,7 @@ export default class PropertiesDetails extends Component {
                             <div className="form-group">
                                 <input
                                     className="form-control"
-                                    type="text"
+                                    type="email"
                                     placeholder="EMail"
                                     required
                                 />
@@ -97,7 +98,9 @@ export default class PropertiesDetails extends Component {
                                     className="form-control"
                                     placeholder="Mensaje"
                                     name="content"
-                                    required>
+                                    maxLength="150"
+                                    required
+                                    >
                                 </textarea>
                             </div>
                             <button type="submit" className="btn btn-primary">
