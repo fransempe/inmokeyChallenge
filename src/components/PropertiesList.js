@@ -25,7 +25,7 @@ export default class PropertiesList extends Component {
 
         const res = await axios.get('http://api-frontend.inmokey.com/properties', options);
         this.setState({ properties: res.data.content })
-        
+
     }
 
     render() {
@@ -48,16 +48,16 @@ export default class PropertiesList extends Component {
                                     </h4>
                                     <div className="container">
                                     </div>
-                                </div>   
+                                </div>
 
-                                  {/* {this.state.properties.map(property => {
+                                {/* {this.state.properties.map(property => {
                                      return property.images.map(image => { 
                                          return ( <img src={image.small} alt=""/> )  
                                         })
                                      })
                                     }  */}
-    
-                                            
+
+
                                 <div style={styles}>
                                     <Carousel>
                                         <div>
@@ -71,11 +71,11 @@ export default class PropertiesList extends Component {
                                         </div>
                                     </Carousel>
                                 </div>
-                                
-                                
-                                   
-                          
-                                
+
+
+
+
+
 
                                 <div className="card-footer">
                                     <p>
