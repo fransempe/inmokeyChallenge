@@ -8,7 +8,7 @@ export default class Navigation extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                                <a className="nav-link" href="/">Inicio <span className="sr-only">(current)</span></a>
                             </li>
                         </ul>
                     </div>

@@ -26,13 +26,13 @@ export default class PropertiesDetails extends Component {
         return (
             <div className="row">
                 <div className="col-md-8 p-4">
-                    <div class="card">
-                        <h5 class="card-header">{this.state.properties.title}</h5>
-                        <div class="card-body">
-                            <h5 class="card-title">{this.state.properties.short_description}</h5>
+                    <div className="card">
+                        <h5 className="card-header">{this.state.properties.title}</h5>
+                        <div className="card-body">
+                            <h5 className="card-title">{this.state.properties.short_description}</h5>
                             <img src="" alt="" />
-                            <p class="card-text">{this.state.properties.description}</p>
-                            <p class="card-text">Precio: $ {precio}.-</p>
+                            <p className="card-text">{this.state.properties.description}</p>
+                            <p className="card-text">Precio: $ {precio}.-</p>
                         </div>
                     </div>
                 </div>
